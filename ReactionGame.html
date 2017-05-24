@@ -34,11 +34,17 @@
       <script type="text/javascript">
         document.getElementById('displayArea').style.width = (window.innerWidth-20)+"px";
         document.getElementById('displayArea').style.height = (window.innerHeight-150)+"px";
-        var colorArray = ['ff0000','7f00ff','0065ff','69b26a','ffe500','ff6600'];
         var radiusArray = ['0%','50%','50%'];
         var startTime = new Date().getTime();
         var width,height,color,radius,left,topval;
-
+        function getRandomColor (){
+          var letters = '0123456789ABCDEF'.split('');
+          var color = "#";
+          for (var i = 0;i < 6;i++){
+            color += letters[random(0,letters.length)];
+          }
+          return color
+        }
         function random(min,max){
           return Math.floor(Math.random()*max)+min;
         }
@@ -49,7 +55,7 @@
         function initObject(){
           width = random (50,100);
           height = width;
-          color = colorArray[random(0,colorArray.length-1)];
+          color = getRandomColor();
           radius = radiusArray[random(0,2)];
           maxleft = document.getElementById('displayArea').offsetWidth - width;
           maxdown = document.getElementById('displayArea').offsetHeight - height;
